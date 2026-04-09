@@ -23,7 +23,7 @@ print(f"This are the words initially taken{text}")
 text=word_tokenize(text)
 #lets begin removal of stop words
 stop_words=set(stopwords.words('english'))
-f_words=[word for word in words if word not in stop_words]
+f_words=[word for word in text if word not in stop_words]
 print(f"After removing the top words this are words:{f_words}")
 
 #the program 2
