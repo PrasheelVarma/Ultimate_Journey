@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Star Pattern</title>
+  <style>
+    pre {
+      font-family: monospace;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <pre id="pattern"></pre>
+
+  <script>
+    const lines = [
+      "     *",
+      "     *",
+      "*    *    *",
+      "     *",
+      "     *"
+    ];
+
+    document.getElementById("pattern").textContent = lines.join("\n");
+  </script>
+</body>
+</html>

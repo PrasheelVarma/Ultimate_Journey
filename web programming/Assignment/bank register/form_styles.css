@@ -1,0 +1,156 @@
+/* Import a clean, professional font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Basic styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Main container for the form */
+.form-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    color: #0056b3; /* A trustworthy bank blue */
+    margin: 0;
+}
+
+header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* Grouping sections of the form */
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: #0056b3;
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: 0 10px;
+}
+
+/* Styling for individual form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Styling for input fields, select, and textarea */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
+    outline: none;
+}
+
+/* Radio button styling */
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+.radio-group label {
+    font-weight: 400;
+}
+
+/* Checkbox styling */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+.checkbox-group input {
+    margin-right: 10px;
+}
+.checkbox-group a {
+    color: #0056b3;
+    text-decoration: none;
+}
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+/* Button container */
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* General button styling */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-submit {
+    background-color: #0056b3;
+    color: white;
+}
+.btn-submit:hover {
+    background-color: #004494;
+    transform: translateY(-2px);
+}
+
+.btn-reset {
+    background-color: #6c757d;
+    color: white;
+    margin-left: 15px;
+}
+.btn-reset:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}

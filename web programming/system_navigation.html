@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Navigation Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #1a73e8;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: #e6e6e6;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        .note {
+            background-color: #e6f7ff;
+            border-left: 5px solid #1a73e8;
+            padding: 1em;
+            margin: 1em 0;
+            border-radius: 4px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 2em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Flutter Navigation Guide 🗺️</h1>
+
+        <p>
+            Flutter's navigation system is simple and flexible, allowing you to move between different screens (or "routes") in your app. The primary way to handle this is with the <code>Navigator</code> widget. Think of the <code>Navigator</code> as a stack of pages, where the top page is the one currently visible. When you navigate to a new screen, you're <strong>pushing</strong> it onto the stack. When you go back, you're <strong>popping</strong> it off.
+        </p>
+
+        <hr>
+
+        <h2>1. Basic Navigation</h2>
+        <p>
+            The most common method is using <code>Navigator.push</code> to move to a new screen and <code>Navigator.pop</code> to return. This is ideal for straightforward forward-and-back navigation.
+        </p>
+
+        <h3>Pushing a New Screen</h3>
+        <p>
+            To navigate to a new screen, you'll use <code>Navigator.push</code> and a <code>MaterialPageRoute</code>. This route widget creates a platform-specific transition animation (e.g., sliding from the right on Android, a more subtle fade on iOS).
+        </p>
+        <pre><code class="language-dart">// Let's say we have a ScreenA and want to go to ScreenB.
+
+// In your button's onPressed() method:
+onPressed: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => ScreenB()),
+  );
+}
+</code></pre>
+        <p>
+            The <code>builder</code> property of <code>MaterialPageRoute</code> is a function that returns the widget for the new screen. The <code>context</code> is a crucial part of Flutter and represents the location of a widget in the widget tree.
+        </p>
+
+        <h3>Popping Back</h3>
+        <p>
+            To return to the previous screen, you'll call <code>Navigator.pop</code>. This action removes the current route from the stack.
+        </p>
+        <pre><code class="language-dart">// In a button or an `onPressed` handler in ScreenB:
+onPressed: () {
+  Navigator.pop(context);
+}
+</code></pre>
+
+        <hr>
+
+        <h2>2. Named Routes</h2>
+        <p>
+            For more complex applications with many screens, using <strong>named routes</strong> is a better approach. It makes the code cleaner and easier to manage by giving each screen a unique string name.
+        </p>
+
+        <h3>Setup</h3>
+        <p>
+            First, define your named routes in the <code>MaterialApp</code> widget in your <code>main.dart</code> file. The <code>routes</code> property is a map where the key is the route name (a <code>String</code>) and the value is a function that returns the widget for that screen.
+        </p>
+        <pre><code class="language-dart">// In your MaterialApp widget
+MaterialApp(
+  title: 'Named Routes Demo',
+  initialRoute: '/', // The default route when the app starts.
+  routes: {
+    '/': (context) => const HomeScreen(),
+    '/details': (context) => const DetailsScreen(),
+  },
+);
+</code></pre>
+
+        <h3>Navigation</h3>
+        <p>
+            Once set up, you can navigate by using <code>Navigator.pushNamed</code>.
+        </p>
+        <pre><code class="language-dart">// Navigate to the '/details' screen
+onPressed: () {
+  Navigator.pushNamed(context, '/details');
+}
+</code></pre>
+
+        <h3>Returning with Named Routes</h3>
+        <p>
+            To go back, you still use <code>Navigator.pop</code>, as the named route system is just an abstraction built on top of the same <code>Navigator</code> stack.
+        </p>
+
+        <hr>
+
+        <h2>3. Passing Data Between Screens</h2>
+        <p>
+            Often, you'll need to send data from one screen to another. With named routes, this is typically done using the <code>arguments</code> property of <code>pushNamed</code>. The data is then accessed on the receiving screen using <code>ModalRoute.of(context)!.settings.arguments</code>.
+        </p>
+
+        <h3>Sending Data</h3>
+        <pre><code class="language-dart">// From HomeScreen to DetailsScreen
+onPressed: () {
+  Navigator.pushNamed(
+    context,
+    '/details',
+    arguments: {
+      'title': 'The Final Frontier',
+      'description': 'A new world awaits you.',
+    },
+  );
+}
+</code></pre>
+
+        <h3>Receiving Data</h3>
+        <pre><code class="language-dart">// In your DetailsScreen widget's build method
+@override
+Widget build(BuildContext context) {
+  // Extract the arguments
+  final args = ModalRoute.of(context)!.settings.arguments as Map&lt;String, String&gt;;
+  final title = args['title'];
+  final description = args['description'];
+
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(title!),
+    ),
+    body: Center(
+      child: Text(description!),
+    ),
+  );
+}
+</code></pre>
+
+        <hr>
+
+        <h2>4. Navigation with <code>GoRouter</code></h2>
+        <p>
+            For a more robust and scalable solution, especially in larger applications, using a package like <strong><code>go_router</code></strong> is highly recommended. It offers a declarative approach to navigation, handles deep linking, and makes complex routing scenarios much simpler.
+        </p>
+
+        <h3>Installation</h3>
+        <p>
+            Add <code>go_router</code> to your <code>pubspec.yaml</code> file.
+        </p>
+        <pre><code class="language-yaml">dependencies:
+  flutter:
+    sdk: flutter
+  go_router: ^11.0.0
+</code></pre>
+
+        <h3>Setup</h3>
+        <p>
+            Define your routes in a <code>GoRouter</code> object.
+        </p>
+        <pre><code class="language-dart">final GoRouter _router = GoRouter(
+  routes: &lt;RouteBase&gt;[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeScreen();
+      },
+    ),
+    GoRoute(
+      path: '/details',
+      builder: (BuildContext context, GoRouterState state) {
+        return const DetailsScreen();
+      },
+    ),
+  ],
+);
+</code></pre>
+        <p>
+            Wrap your <code>MaterialApp</code> with <code>MaterialApp.router</code> and use your <code>_router</code> object.
+        </p>
+        <pre><code class="language-dart">MaterialApp.router(
+  routerConfig: _router,
+);
+</code></pre>
+
+        <h3>Navigation</h3>
+        <p>
+            You can navigate by name or by path using the <code>context</code>.
+        </p>
+        <pre><code class="language-dart">// Navigate by path
+onPressed: () {
+  context.go('/details');
+}
+
+// Navigate by name (if you've named your routes)
+onPressed: () {
+  context.goNamed('detailsRouteName');
+}
+</code></pre>
+
+    </div>
+</body>
+</html>

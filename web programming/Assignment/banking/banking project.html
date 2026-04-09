@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRCE - CSM Bank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <div class="bg-blue-800 text-white p-6 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">MRCE - CSM Bank</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#home" class="nav-link px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300">Home</a></li>
+                    <li><a href="#withdraw" class="nav-link px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300">Withdraw</a></li>
+                    <li><a href="#deposit" class="nav-link px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300">Deposit</a></li>
+                    <li><a href="#statement" class="nav-link px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300">Mini Statement</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="flex-grow container mx-auto p-8">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-4">Welcome to Your Account</h2>
+                <p class="text-gray-600 mb-4">Your current balance is:</p>
+                <p id="balance" class="text-5xl font-bold text-blue-600 mb-6">$1,000.00</p>
+                <p class="text-gray-500 text-sm">Use the navigation above to perform transactions.</p>
+            </div>
+        </div>
+
+        <!-- Withdraw Page -->
+        <div id="withdraw" class="page">
+            <div class="bg-white p-8 rounded-xl shadow-md max-w-lg mx-auto">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Withdraw Funds</h2>
+                <form id="withdraw-form" class="space-y-4">
+                    <div>
+                        <label for="withdraw-amount" class="block text-gray-700">Amount</label>
+                        <input type="number" id="withdraw-amount" name="amount" required class="mt-1 w-full px-4 py-2 rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm" placeholder="Enter amount">
+                    </div>
+                    <button type="submit" class="w-full bg-red-500 text-white font-bold py-3 rounded-md hover:bg-red-600 transition-colors">
+                        Withdraw
+                    </button>
+                </form>
+                <div id="withdraw-message" class="mt-4 text-center"></div>
+            </div>
+        </div>
+
+        <!-- Deposit Page -->
+        <div id="deposit" class="page">
+            <div class="bg-white p-8 rounded-xl shadow-md max-w-lg mx-auto">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Deposit Funds</h2>
+                <form id="deposit-form" class="space-y-4">
+                    <div>
+                        <label for="deposit-amount" class="block text-gray-700">Amount</label>
+                        <input type="number" id="deposit-amount" name="amount" required class="mt-1 w-full px-4 py-2 rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm" placeholder="Enter amount">
+                    </div>
+                    <button type="submit" class="w-full bg-green-500 text-white font-bold py-3 rounded-md hover:bg-green-600 transition-colors">
+                        Deposit
+                    </button>
+                </form>
+                <div id="deposit-message" class="mt-4 text-center"></div>
+            </div>
+        </div>
+
+        <!-- Mini Statement Page -->
+        <div id="statement" class="page">
+            <div class="bg-white p-8 rounded-xl shadow-md">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Mini Statement</h2>
+                <div id="statement-list-container" class="space-y-2">
+                    <!-- Statement entries will be dynamically added here -->
+                </div>
+                <div id="no-transactions-message" class="text-center text-gray-500 mt-4" style="display: none;">No transactions yet.</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4">
+        &copy; 2023 MRCE - CSM Bank. All rights reserved.
+    </footer>
+
+    <script>
+        let balance = 1000.00;
+        let transactions = [];
+
+        const balanceEl = document.getElementById('balance');
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const withdrawForm = document.getElementById('withdraw-form');
+        const depositForm = document.getElementById('deposit-form');
+        const statementListContainer = document.getElementById('statement-list-container');
+        const noTransactionsMessage = document.getElementById('no-transactions-message');
+
+        // Function to format balance as currency
+        function formatCurrency(amount) {
+            return `$${amount.toFixed(2)}`;
+        }
+
+        // Function to update the balance displayed on the page
+        function updateBalanceDisplay() {
+            balanceEl.textContent = formatCurrency(balance);
+        }
+
+        // Function to render the mini statement
+        function renderStatement() {
+            statementListContainer.innerHTML = '';
+            if (transactions.length === 0) {
+                noTransactionsMessage.style.display = 'block';
+            } else {
+                noTransactionsMessage.style.display = 'none';
+                transactions.reverse().forEach(transaction => {
+                    const entry = document.createElement('div');
+                    entry.className = "bg-gray-50 p-4 rounded-md shadow-sm flex justify-between items-center";
+                    const amountClass = transaction.type === 'deposit' ? 'text-green-600' : 'text-red-600';
+                    entry.innerHTML = `
+                        <span class="text-gray-700">${transaction.date}</span>
+                        <span class="text-gray-700 font-medium">${transaction.type.toUpperCase()}</span>
+                        <span class="${amountClass} font-bold">${formatCurrency(transaction.amount)}</span>
+                    `;
+                    statementListContainer.appendChild(entry);
+                });
+            }
+        }
+
+        // Function to navigate between pages
+        function showPage(id) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        // Event listeners for navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const pageId = link.getAttribute('href').substring(1);
+                showPage(pageId);
+                // Also update the statement view when navigating to it
+                if (pageId === 'statement') {
+                    renderStatement();
+                }
+            });
+        });
+
+        // Handle Withdraw form submission
+        withdrawForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const amount = parseFloat(document.getElementById('withdraw-amount').value);
+            const messageDiv = document.getElementById('withdraw-message');
+            if (amount > 0 && balance >= amount) {
+                balance -= amount;
+                transactions.push({
+                    type: 'withdraw',
+                    amount: amount,
+                    date: new Date().toLocaleDateString()
+                });
+                updateBalanceDisplay();
+                messageDiv.className = "mt-4 text-center text-green-600";
+                messageDiv.textContent = `Withdrawal of ${formatCurrency(amount)} successful.`;
+                withdrawForm.reset();
+            } else if (amount <= 0) {
+                messageDiv.className = "mt-4 text-center text-red-600";
+                messageDiv.textContent = "Please enter a valid amount.";
+            } else {
+                messageDiv.className = "mt-4 text-center text-red-600";
+                messageDiv.textContent = "Insufficient balance.";
+            }
+        });
+
+        // Handle Deposit form submission
+        depositForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const amount = parseFloat(document.getElementById('deposit-amount').value);
+            const messageDiv = document.getElementById('deposit-message');
+            if (amount > 0) {
+                balance += amount;
+                transactions.push({
+                    type: 'deposit',
+                    amount: amount,
+                    date: new Date().toLocaleDateString()
+                });
+                updateBalanceDisplay();
+                messageDiv.className = "mt-4 text-center text-green-600";
+                messageDiv.textContent = `Deposit of ${formatCurrency(amount)} successful.`;
+                depositForm.reset();
+            } else {
+                messageDiv.className = "mt-4 text-center text-red-600";
+                messageDiv.textContent = "Please enter a valid amount.";
+            }
+        });
+
+        // Initial setup
+        updateBalanceDisplay();
+        showPage('home');
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* Basic styling for the body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 20px;
+}
+
+/* Centered H1 with a modern look */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Styling for the table to make it look professional */
+table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-collapse: collapse; /* Removes space between borders */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the border-radius is applied to the content */
+}
+
+/* Styling for table cells (th and td) */
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 1em;
+}
+
+/* Header row styling (days and times) */
+thead th {
+    background-color: #3498db;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Styling for the first column (Days) */
+tbody th {
+    background-color: #ecf0f1;
+    color: #34495e;
+    font-weight: 600;
+}
+
+/* Alternating row colors for better readability */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+    background-color: #e2e8f0;
+}
+
+/* Specific styling for the LUNCH cell */
+.lunch-break {
+    background-color: #2ecc71;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle; /* Center the text vertically */
+}
+
+/* Caption styling */
+caption {
+    caption-side: bottom;
+    padding: 15px;
+    font-size: 0.9em;
+    color: #777;
+    font-style: italic;
+}

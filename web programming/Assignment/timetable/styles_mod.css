@@ -1,0 +1,114 @@
+/* Import a modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Define keyframes for the animated background gradient */
+@keyframes magical-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Basic styling for the body */
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    color: #ffffff;
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: magical-gradient 15s ease infinite;
+    min-height: 100vh;
+}
+
+/* Centered H1 with a glowing text effect */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Main table styling using the "Glassmorphism" effect */
+table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-collapse: separate; /* Required for border-radius on cells */
+    border-spacing: 0;
+    
+    /* Frosted Glass Effect */
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    
+    /* Styling */
+    border-radius: 15px;
+    overflow: hidden; /* Keeps content within the rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Styling for all table cells */
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+/* Header row styling */
+thead th {
+    background-color: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+/* First column (Days) styling */
+tbody th {
+    background-color: rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+}
+
+/* Remove bottom border from the last row */
+tbody tr:last-child th,
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Interactive hover effect for rows */
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02); /* Makes the row slightly larger */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+tbody tr:hover td, tbody tr:hover th {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Special styling for the LUNCH break cell */
+.lunch-break {
+    font-weight: bold;
+    font-size: 1.2em;
+    background: rgba(46, 204, 113, 0.5);
+    vertical-align: middle;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+/* Caption styling */
+caption {
+    caption-side: bottom;
+    padding: 20px;
+    font-size: 0.9em;
+    font-style: italic;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}

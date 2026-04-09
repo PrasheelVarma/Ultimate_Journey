@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALLAREDDY COLLEGE OF ENGINEERING (MRCE)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ======================================= */
+        /* === Embedded Styles (Internal) === */
+        /* These styles are specific to this page and could not be reused. */
+        /* ======================================= */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ======================================= */
+        /* === Simulated External Styles === */
+        /* These would typically be in a separate .css file. */
+        /* They are reusable and define the look and feel of the site. */
+        /* ======================================= */
+        .nav-link {
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #4b5563; /* Change to a darker gray on hover */
+            transform: translateY(-2px);
+        }
+
+        .hero-title {
+            animation: slideInFromLeft 1s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 rounded-b-lg">
+        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">MALLAREDDY COLLEGE OF ENGINEERING (MRCE)</h1>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm font-medium">
+                    <li><a href="#department" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">my department cse aiml</a></li>
+                    <li><a href="#year" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">year</a></li>
+                    <li><a href="#sports" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">sports activity</a></li>
+                    <li><a href="#other-activities" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">other activities</a></li>
+                    <li><a href="#placement" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">placement</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <!-- Department Section -->
+        <section id="department" class="page-section active p-8 md:p-12 bg-white rounded-xl shadow-lg mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 pb-2">My Department cse aiml</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                This page is about the Computer Science and Engineering department, specializing in Artificial Intelligence and Machine Learning.
+            </p>
+            <ul class="mt-6 space-y-2 text-gray-600">
+                <li>• Cutting-Edge Curriculum</li>
+                <li>• Hands-on Experience</li>
+                <li>• Faculty-led Research</li>
+            </ul>
+        </section>
+
+        <!-- Year Section -->
+        <section id="year" class="page-section p-8 md:p-12 bg-white rounded-xl shadow-lg mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 pb-2">Academic Year Timeline</h2>
+            <div class="space-y-4">
+                <p>Semester 1: August - December</p>
+                <p>Semester 2: January - May</p>
+                <p>Breaks and holidays are included in the calendar.</p>
+            </div>
+        </section>
+
+        <!-- Sports Activity Section -->
+        <section id="sports" class="page-section p-8 md:p-12 bg-white rounded-xl shadow-lg mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 pb-2">Sports Activities</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                We offer a variety of sports activities for students to stay active.
+            </p>
+            <ul class="space-y-2">
+                <li>• Basketball</li>
+                <li>• Football</li>
+                <li>• Badminton</li>
+                <li>• Volleyball</li>
+            </ul>
+        </section>
+
+        <!-- Other Activities Section -->
+        <section id="other-activities" class="page-section p-8 md:p-12 bg-white rounded-xl shadow-lg mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 pb-2">Clubs & Other Activities</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                Students can participate in various clubs and societies.
+            </p>
+            <ul class="space-y-2">
+                <li>• Coding Club</li>
+                <li>• Robotics Club</li>
+                <li>• Literary Society</li>
+                <li>• Drama Club</li>
+            </ul>
+        </section>
+
+        <!-- Placement Section -->
+        <section id="placement" class="page-section p-8 md:p-12 bg-white rounded-xl shadow-lg mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 pb-2">Placement Cell</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                Our placement cell helps students find internships and full-time jobs.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
+                <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Company+A" alt="Company A Logo" class="w-full h-auto object-contain rounded-md shadow-sm">
+                <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Company+B" alt="Company B Logo" class="w-full h-auto object-contain rounded-md shadow-sm">
+                <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Company+C" alt="Company C Logo" class="w-full h-auto object-contain rounded-md shadow-sm">
+                <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Company+D" alt="Company D Logo" class="w-full h-auto object-contain rounded-md shadow-sm">
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section p-8 md:p-12 bg-white rounded-xl shadow-lg mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 pb-2">Contact Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-semibold text-xl mb-4">Get in Touch</h3>
+                    <form id="contactForm">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition duration-300">Submit</button>
+                        <div id="form-message" class="mt-4 text-center"></div>
+                    </form>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl mb-4">Official Contact</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>Address:</strong> 123 College Avenue, University City, 12345
+                    </p>
+                    <p class="text-gray-600 mb-2">
+                        <strong>Phone:</strong> +1 (555) 123-4567
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>Email:</strong> info@collegeofeng.edu
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6 mt-10 rounded-t-lg">
+        <p class="text-sm">&copy; 2024 MALLAREDDY COLLEGE OF ENGINEERING (MRCE). All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Page Navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('header nav ul li a');
+            const sections = document.querySelectorAll('.page-section');
+            const formMessage = document.getElementById('form-message');
+
+            // Function to show the correct section based on the URL hash
+            const showSection = (id) => {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                const targetSection = document.querySelector(id);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            };
+
+            // Event listener for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    history.pushState(null, '', targetId);
+                    showSection(targetId);
+                });
+            });
+
+            // Handle back/forward browser button
+            window.addEventListener('popstate', () => {
+                const hash = window.location.hash || '#department';
+                showSection(hash);
+            });
+
+            // Initial section display based on URL or default to department
+            const initialHash = window.location.hash || '#department';
+            showSection(initialHash);
+
+            // Simple form submission handler (prevents page reload)
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                console.log('Form submitted successfully!');
+                formMessage.innerHTML = '<span class="text-green-600">Thank you for your message!</span>';
+                // In a real application, you would send this data to a server
+            });
+        });
+    </script>
+</body>
+</html>
