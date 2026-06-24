@@ -23,3 +23,11 @@ print(type(a))
 print(type(li))     
 print(type(d))     
 print(type(bool_var))
+
+#Taking input from user as integer
+a=int(input("Enter a number, this default string number is converted to integer from the user input (type the number): "))
+print(f"The integer a->{a}") #inline type casting
+#Try removing that int before the (input) to see how it works!
+b=input("Enter a number: ")
+b=int(b) #after the user input the variable is type casted to make the string to integer
+print(f"The number entered is {b}")
