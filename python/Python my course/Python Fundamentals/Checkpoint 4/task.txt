@@ -1,0 +1,48 @@
+🚀 The Scenario: The Automated Supply Drone
+
+You are building the navigation and inventory intelligence system for an automated cargo drone operating over Hyderabad. The drone needs to deliver medical supplies from a central hub to multiple delivery zones.
+📋 The Mission Rules (Your Program Requirements)
+
+    The Target Limit (while loop):
+
+        The drone has a limited total battery life. At the start of the program, prompt the user to input the total battery life as a whole number (e.g., 100).
+
+        The drone must keep flying and processing delivery runs while its battery life is strictly greater than 0.
+
+    The Delivery Run (for loop & if statements):
+
+        On every single flight run, the drone flies over a sector containing exactly 5 delivery drop-zones (represented by a range()).
+
+        Use a for loop to step through zones 0 to 4.
+
+        For each zone, your script must ask the user for the Package Type by typing a single character string: 'M' for Medicine, 'F' for Food, or 'E' for Empty (no delivery needed at this zone).
+
+        Inside the loop, evaluate the input using conditional statements (if / elif / else):
+
+            If it is 'M': Print "💊 Dropping Medicine". This action drains the battery by 10 units.
+
+            If it is 'F': Print "🍱 Dropping Food". This action drains the battery by 5 units.
+
+            If it is 'E': Print "✈️ Passing zone safely". This action drains 0 units of battery.
+
+            If it's anything else: Print "⚠️ Invalid signal! Scanning skipped." (0 battery drain).
+
+    The Mid-Loop Emergency Check (if statement with a manual escape):
+
+        Still inside the zone processing loop, right after a package is dropped, you must check the remaining battery.
+
+        If the battery falls to 0 or less at any point during the flight, instantly print "🚨 BATTERY CRITICAL! Drone forcing emergency landing immediately!" and terminate the entire program right there.
+
+    The Round Summary:
+
+        If the drone successfully finishes scanning all 5 zones without crashing, print out a status update showing the remaining battery before the next flight run begins.
+
+🛠️ Your Instructions
+
+    Open your code repository on your laptop.
+
+    In Kate, open your checkpoint4_loops.py file or create a clean one.
+
+    Write the code from scratch using everything we discussed (including proper variable names and explicit integer type-casting for the input).
+
+    Run it in your terminal panel (

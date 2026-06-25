@@ -8,6 +8,7 @@ deliver=int(input("Enter how many deliveries to be done in this single journey: 
 if 90<=charge<=100:
     if 0<=deliver<=10:
         print(f"Initializing, {deliver} deliveries are starting with {charge}% Battery")
+    else: print("The maximun deliveries in single journey is 10 only")
 elif 60<=charge<=89:
     if 0<=deliver<=5:
         print(f"Alright, {deliver} deliveries are starting with {charge}% Battery")
@@ -18,3 +19,9 @@ elif 30<=charge<=59:
     else: print("sorry less that 3 deliveries are only possible, for more deliveries charge the device")
 else:
     print(f"Low Battery, Deliveries not possible charge now")
+
+M=charge-20
+P=charge-30
+F=charge-40
+
+print(f"Delivery Started, Select the item type:(M/P/F) ")
